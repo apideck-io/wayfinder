@@ -4,6 +4,7 @@ import { ModalContent } from './ModalContent'
 
 export interface Props {
   open: boolean
+  isStandAlone: boolean
   onClose?: () => void
   defaultInput?: string
 }
@@ -11,6 +12,7 @@ export interface Props {
 export const WayFinder: React.FC<Props> = ({
   open,
   onClose,
+  isStandAlone = true,
   defaultInput = '{}'
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(true)
@@ -43,7 +45,10 @@ export const WayFinder: React.FC<Props> = ({
             onCloseModal()
           }}
         >
-          <ModalContent defaultInput={defaultInput} />
+          <ModalContent
+            defaultInput={defaultInput}
+            isStandAlone={isStandAlone}
+          />
         </Modal>
       ) : null}
     </div>

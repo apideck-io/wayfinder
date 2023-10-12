@@ -28,6 +28,7 @@ Trigger.args = {
     console.log('closed')
   },
   open: true,
+  isStandAlone: true,
   defaultInput: JSON.stringify(
     {
       id: 'file',

@@ -2,6 +2,15 @@
 
 WayFinder is a TypeScript-based application that helps you navigate through your JSON data. It provides a user-friendly interface for navigating / querying your JSON data and building JSONPath expressions.
 
+## Using WayFinder
+
+1. Place your desired JSON in the left pane.
+2. To build a JSONPath, simply click on any key within the JSON data. This will automatically add it to the JSONPath.
+3. If you aim to target an item within an array, select a value one of the item's properties to insert a filter expression.
+4. To verify the correctness of your JSONPath, press the 'Test' button. Valid JSONPaths will have their results showcased in the right pane.
+
+You can also manually adjust or add a filter expression directly in the JSONPath.
+
 <div align="center" style="margin-top: 30px; margin-bottom: 30px;">
 
 ![WayFinder Application](./public/screenshot.png)
