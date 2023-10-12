@@ -9,8 +9,6 @@ import { findNode, findPath } from '../utils/pathFinder'
 
 interface JsonInputProps {
   jsonString: string
-  creatingExpression: boolean
-  setCreatingExpression: (creatingExpression: boolean) => void
   onJsonPathChange: (path: string | null) => void
   onJsonStringChange: (jsonString: string) => void
 }
@@ -76,9 +74,7 @@ const handleJsonParse = (
 export const JsonInput = ({
   jsonString,
   onJsonStringChange,
-  onJsonPathChange: onJsonPathChangeProp,
-  creatingExpression,
-  setCreatingExpression
+  onJsonPathChange: onJsonPathChangeProp
 }: JsonInputProps) => {
   // State
   const [position, setPosition] = useState<IPosition | null>(null)
@@ -127,7 +123,7 @@ export const JsonInput = ({
             onJsonPathChange(newPath)
           }
           // If a key path is selected and an expression is being created, generate a filter expression
-          else if (selectedKeyPath && creatingExpression) {
+          else if (selectedKeyPath) {
             const match = selectedKeyPath.match(/.*\[\*\]\.(.*)(?=\.)/)
             const pathToCurrentNode = match ? `.${match[1]}` : ''
             const filterExpression = `[?(@${pathToCurrentNode}.${
@@ -142,7 +138,6 @@ export const JsonInput = ({
               )
               // Trigger a path change and stop creating the expression
               onJsonPathChange(newPath)
-              setCreatingExpression(false)
             }
           }
         }
@@ -153,9 +148,7 @@ export const JsonInput = ({
     jsonString,
     position,
     onJsonPathChange,
-    selectedKeyPath,
-    creatingExpression,
-    setCreatingExpression
+    selectedKeyPath
   ])
 
   useEffect(() => {
