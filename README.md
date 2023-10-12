@@ -2,6 +2,12 @@
 
 WayFinder is a TypeScript-based application that helps you navigate through your JSON data. It provides a user-friendly interface for navigating / querying your JSON data and building JSONPath expressions.
 
+<div align="center" style="margin-top: 30px; margin-bottom: 30px;">
+
+![WayFinder Application](./public/screenshot.png)
+
+</div>
+
 ## Running Locally
 
 To run the WayFinder application locally, you need to have Node.js and Yarn installed on your machine. Once you have these prerequisites, follow the steps below:
