@@ -18,6 +18,8 @@ export const queryJsonPath = (
     const result = jp.query(parsedJson, jsonPath)
     return E.right(result)
   } catch (error) {
-    return E.left(`Invalid JSONPath', ${(error as Error).message}`)
+    return E.left(
+      `Invalid JSONPath: ${(error as Error).message.split('\n')[0]}`
+    )
   }
 }

@@ -1,7 +1,7 @@
 import * as E from 'fp-ts/Either'
 
 import { Button, Card } from '@apideck/components'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { queryJsonPath } from '../utils/queryJsonPath'
 import { CurrentPathInput } from './CurrentPathInput'
 import { JsonInput } from './JsonInput'
@@ -15,20 +15,27 @@ export const ModalContent = ({
   defaultInput: string
   isStandAlone: boolean
 }) => {
+  // State
   const [jsonPath, setJsonPath] = useState<string | null>(null)
   const [jsonString, setJsonString] = useState<string>(defaultInput)
   const [testResult, setTestResult] = useState<string | null>(null)
+  const [jsonPathError, setJsonPathError] = useState<string | null>(null)
 
   const handleTestClick = () => {
     if (jsonPath) {
       const result = queryJsonPath(jsonString, jsonPath)
       if (E.isLeft(result)) {
-        console.error(result.left)
+        setJsonPathError(result.left) // Set error state
       } else {
         setTestResult(JSON.stringify(result.right, null, 2))
+        setJsonPathError(null) // Clear error state
       }
     }
   }
+
+  useEffect(() => {
+    setJsonPathError(null)
+  }, [jsonPath])
 
   return (
     <div
@@ -45,11 +52,12 @@ export const ModalContent = ({
                 jsonPath={jsonPath}
                 className='flex-grow'
                 setJsonPath={setJsonPath}
+                jsonPathError={jsonPathError}
               />
 
               <Button
                 className='ml-4'
-                variant='primary'
+                variant={jsonPathError ? 'danger' : 'primary'}
                 onClick={handleTestClick}
               >
                 Test

@@ -4,7 +4,7 @@ import { TextInput } from '@apideck/components'
 interface CurrentPathInputProps {
   jsonPath: string | null
   className?: string
-
+  jsonPathError: string | null
   // Function to set the JSON path
   setJsonPath: (path: string | null) => void
 }
@@ -13,20 +13,30 @@ interface CurrentPathInputProps {
 export const CurrentPathInput = ({
   jsonPath,
   className,
+  jsonPathError,
   setJsonPath
 }: CurrentPathInputProps) => {
   // Render a TextInput component
   return (
-    <TextInput
-      name='currentPathValue'
-      placeholder='Current path'
-      value={jsonPath || ''}
-      canBeCopied={true}
-      className={className}
-      // On change event, set the JSON path to the input value
-      onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-        setJsonPath(e.target.value)
-      }}
-    />
+    <div className={`relative ${className}`}>
+      <TextInput
+        name='currentPathValue'
+        placeholder='Current path'
+        value={jsonPath || ''}
+        canBeCopied={true}
+        // On change event, set the JSON path to the input value
+        onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
+          setJsonPath(e.target.value)
+        }}
+      />
+      {jsonPathError && (
+        <p
+          className='absolute text-red-600 text-xs '
+          style={{ bottom: '-21px' }}
+        >
+          {jsonPathError}
+        </p>
+      )}
+    </div>
   )
 }
