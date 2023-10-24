@@ -26,6 +26,7 @@
   },
   "dependencies": {
     "@monaco-editor/react": "^4.6.0",
+    "classnames": "2.3.2",
     "fp-ts": "^2.16.1",
     "fp-ts-std": "^0.17.1",
     "json-to-ast": "^2.1.0",
@@ -33,9 +34,11 @@
     "jsonpath": "^1.1.1",
     "monaco-editor": "^0.44.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "use-clipboard-copy": "0.2.0"
   },
   "devDependencies": {
+    "@headlessui/react": "^1.4.2",
     "@storybook/addon-essentials": "^7.4.6",
     "@storybook/addon-interactions": "^7.4.6",
     "@storybook/addon-links": "^7.4.6",

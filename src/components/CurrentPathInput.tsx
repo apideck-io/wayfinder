@@ -1,4 +1,4 @@
-import { TextInput } from '@apideck/components';
+import TextInput from './TextInput';
 
 // Define the properties for the CurrentPathInput component
 interface CurrentPathInputProps {

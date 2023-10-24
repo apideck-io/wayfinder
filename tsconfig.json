@@ -24,6 +24,6 @@
     "noFallthroughCasesInSwitch": true,
     "strictNullChecks": true
   },
-  "include": ["src/**/*", "stories/**/*.tsx"],
+  "include": ["src/**/*"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

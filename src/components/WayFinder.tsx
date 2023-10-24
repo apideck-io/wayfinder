@@ -1,27 +1,28 @@
 import * as E from 'fp-ts/Either';
 
-import { Button } from '@apideck/components';
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { queryJsonPath } from '../utils/queryJsonPath';
+import { Button } from './Button';
 import { CurrentPathInput } from './CurrentPathInput';
 import { JsonInput } from './JsonInput';
 import { JsonOutput } from './JsonOutput';
 import { StandAloneHeader } from './StandAloneHeader';
 
+interface Props {
+  defaultInput?: string;
+  isStandAlone?: boolean;
+}
+
 export const WayFinder = ({
   defaultInput = '',
   isStandAlone = false,
-}: {
-  defaultInput?: string;
-  isStandAlone?: boolean;
-}) => {
-  // State
+}: Props) => {
   const [jsonPath, setJsonPath] = useState<string | null>(null);
   const [jsonString, setJsonString] = useState<string>(defaultInput);
   const [testResult, setTestResult] = useState<string | null>(null);
   const [jsonPathError, setJsonPathError] = useState<string | null>(null);
 
-  const handleTestClick = () => {
+  const handleTestClick: () => void = useCallback(() => {
     if (jsonPath) {
       const result = queryJsonPath(jsonString, jsonPath);
       if (E.isLeft(result)) {
@@ -31,18 +32,16 @@ export const WayFinder = ({
         setJsonPathError(null); // Clear error state
       }
     }
-  };
+  }, [jsonPath, jsonString]);
 
   useEffect(() => {
-    // setJsonPathError(null);
     handleTestClick();
-  }, [jsonPath]);
+  }, [jsonPath, handleTestClick]);
 
   return (
     <div className='relative sm:rounded-lg h-full' id='react-wayfinder-content'>
       <div className={`h-full overflow-hidden min-h-[300px]`}>
         {isStandAlone && <StandAloneHeader />}
-
         <div className={`relative  ${isStandAlone ? 'px-6 pb-6' : ''}`}>
           <div className='grid grid-cols-2 bg-neutral-700 rounded-t-lg'>
             <div className={`w-full text-base font-normal`}>

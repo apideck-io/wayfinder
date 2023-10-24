@@ -1,14 +1,13 @@
 import '../src/styles/index.css';
 
 import { Meta, StoryFn } from '@storybook/react';
-import {
-  Props,
-  WayFinderModal as WayFinder,
-} from '../src/components/WayFinderModal';
+import { Props, WayFinderModal } from '../src/components/WayFinderModal';
+
+import React from 'react';
 
 const meta: Meta = {
   title: 'WayFinder',
-  component: WayFinder,
+  component: WayFinderModal,
   argTypes: {
     children: {
       control: {
@@ -23,10 +22,11 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: StoryFn<Props> = (args) => <WayFinder {...args} />;
-export const Trigger = Template.bind({});
+const Template: StoryFn<Props> = (args) => <WayFinderModal {...args} />;
 
-Trigger.args = {
+export const Modal: any = Template.bind({});
+
+Modal.args = {
   onClose: () => {
     console.log('closed');
   },
@@ -49,7 +49,7 @@ Trigger.args = {
   ),
 };
 
-export const Standalone = Template.bind({});
+export const Standalone: any = Template.bind({});
 
 Standalone.args = {
   onClose: () => {
