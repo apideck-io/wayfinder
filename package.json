@@ -24,6 +24,9 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
+  "publishConfig": {
+    "access": "public"
+  },
   "dependencies": {
     "@monaco-editor/react": "^4.6.0",
     "classnames": "2.3.2",
