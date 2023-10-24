@@ -13,7 +13,7 @@ You can also manually adjust or add a filter expression directly in the JSONPath
 
 <div align="center" style="margin-top: 30px; margin-bottom: 30px;">
 
-![WayFinder Application](./public/screenshot.png)
+![WayFinder Application](./screenshot.png)
 
 </div>
 

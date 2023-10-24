@@ -1,21 +1,21 @@
-import { Dialog, Transition } from '@headlessui/react'
+import { Dialog, Transition } from '@headlessui/react';
 import React, {
   CSSProperties,
   Fragment,
   ReactNode,
   useEffect,
-  useState
-} from 'react'
+  useState,
+} from 'react';
 
-import classNames from 'classnames'
-import { createPortal } from 'react-dom'
+import classNames from 'classnames';
+import { createPortal } from 'react-dom';
 
 export interface Props extends React.HTMLAttributes<HTMLDivElement> {
-  children: ReactNode
-  onClose: () => void
-  isOpen: boolean
-  className?: string
-  style?: CSSProperties
+  children: ReactNode;
+  onClose: () => void;
+  isOpen: boolean;
+  className?: string;
+  style?: CSSProperties;
 }
 
 export const Modal: React.FC<Props> = ({
@@ -23,13 +23,13 @@ export const Modal: React.FC<Props> = ({
   onClose,
   isOpen = false,
   className = '',
-  style = {}
+  style = {},
 }: Props) => {
-  const [mounted, setMounted] = useState(false)
+  const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    setMounted(true)
-  }, [])
+    setMounted(true);
+  }, []);
 
   const modalComponent = (
     <Transition.Root appear show={isOpen} as={Fragment}>
@@ -37,11 +37,11 @@ export const Modal: React.FC<Props> = ({
         as='div'
         onClose={onClose}
         style={style}
-        className='apideck react-way-finder'
+        className='apideck react-wayfinder'
       >
         <div
           data-testid='backdrop'
-          id='react-way-finder'
+          id='react-wayfinder'
           className={classNames(
             'fixed inset-0 z-40 group overflow-y-auto bg-gray-400 bg-opacity-75',
             className
@@ -77,8 +77,8 @@ export const Modal: React.FC<Props> = ({
               leaveTo='opacity-0 scale-95'
             >
               <div
-                className='inline-block w-full text-left max-w-6xl p-6 my-12 lg:my-16 align-middle transition-all transform bg-white shadow-xl rounded-lg'
-                id='react-way-finder-modal'
+                className='inline-block w-full text-left max-w-5xl my-12 lg:my-16 align-middle transition-all transform bg-white shadow-xl rounded-lg'
+                id='react-wayfinder-modal'
               >
                 {children}
               </div>
@@ -87,7 +87,7 @@ export const Modal: React.FC<Props> = ({
         </div>
       </Dialog>
     </Transition.Root>
-  )
+  );
 
-  return mounted ? createPortal(modalComponent, document.body) : null
-}
+  return mounted ? createPortal(modalComponent, document.body) : null;
+};

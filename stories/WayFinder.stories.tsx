@@ -1,7 +1,10 @@
-import '../src/styles/index.css'
+import '../src/styles/index.css';
 
-import { Meta, StoryFn } from '@storybook/react'
-import { Props, WayFinder } from '../src/components/WayFinder'
+import { Meta, StoryFn } from '@storybook/react';
+import {
+  Props,
+  WayFinderModal as WayFinder,
+} from '../src/components/WayFinderModal';
 
 const meta: Meta = {
   title: 'WayFinder',
@@ -9,23 +12,48 @@ const meta: Meta = {
   argTypes: {
     children: {
       control: {
-        type: 'text'
-      }
-    }
+        type: 'text',
+      },
+    },
   },
   parameters: {
-    controls: { expanded: true }
-  }
-}
+    controls: { expanded: true },
+  },
+};
 
-export default meta
+export default meta;
 
-const Template: StoryFn<Props> = (args) => <WayFinder {...args} />
-export const Trigger = Template.bind({})
+const Template: StoryFn<Props> = (args) => <WayFinder {...args} />;
+export const Trigger = Template.bind({});
 
 Trigger.args = {
   onClose: () => {
-    console.log('closed')
+    console.log('closed');
+  },
+  open: true,
+  isStandAlone: false,
+  defaultInput: JSON.stringify(
+    {
+      id: 'file',
+      value: 'File',
+      popup: {
+        menuitem: [
+          { id: 1, name: 'New' },
+          { id: 2, name: 'Open' },
+          { id: 3, name: 'Close' },
+        ],
+      },
+    },
+    null,
+    2
+  ),
+};
+
+export const Standalone = Template.bind({});
+
+Standalone.args = {
+  onClose: () => {
+    console.log('closed');
   },
   open: true,
   isStandAlone: true,
@@ -37,11 +65,11 @@ Trigger.args = {
         menuitem: [
           { id: 1, name: 'New' },
           { id: 2, name: 'Open' },
-          { id: 3, name: 'Close' }
-        ]
-      }
+          { id: 3, name: 'Close' },
+        ],
+      },
     },
     null,
     2
-  )
-}
+  ),
+};

@@ -1,20 +1,31 @@
 {
-  "name": "way-finder",
-  "private": true,
-  "version": "0.0.0",
+  "version": "0.1.0",
+  "name": "@apideck/wayfinder",
   "type": "module",
+  "author": "Apideck",
+  "license": "MIT",
+  "main": "dist/wayfinder.umd.js",
+  "module": "dist/wayfinder.es.js",
+  "typings": "dist/src/index.d.ts",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "keywords": [
+    "apideck"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
+    "release": "np --no-publish && npm publish --access public --registry https://registry.npmjs.org",
+    "typecheck": "vue-tsc --noEmit",
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
   "dependencies": {
-    "@apideck/components": "^0.12.12",
     "@monaco-editor/react": "^4.6.0",
-    "@tailwindcss/forms": "^0.5.6",
     "fp-ts": "^2.16.1",
     "fp-ts-std": "^0.17.1",
     "json-to-ast": "^2.1.0",
@@ -33,7 +44,7 @@
     "@storybook/react": "^7.4.6",
     "@storybook/react-vite": "^7.4.6",
     "@storybook/testing-library": "^0.2.2",
-    "@tailwindcss/typography": "^0.5.10",
+    "@tailwindcss/forms": "^0.5.6",
     "@types/json-to-ast": "^2.1.2",
     "@types/jsonpath": "^0.2.1",
     "@types/react": "^18.2.15",
@@ -52,7 +63,8 @@
     "storybook": "^7.4.6",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.0.2",
-    "vite": "^4.4.5"
+    "vite": "^4.4.5",
+    "vite-plugin-dts": "^3.6.0"
   },
   "packageManager": "yarn@3.6.4"
 }
