@@ -1,4 +1,3 @@
-import * as E from 'fp-ts/Either'
 import React from 'react'
 
 import { useEffect, useState } from 'react'
@@ -24,10 +23,11 @@ export const WayFinder = ({ defaultInput = '', isStandAlone = false, onSelect }:
   const handleTestClick: () => void = React.useCallback(() => {
     if (jsonPath) {
       const result = queryJsonPath(jsonString, jsonPath)
-      if (E.isLeft(result)) {
-        setJsonPathError(result.left) // Set error state
+
+      if (result.error) {
+        setJsonPathError(result.error) // Set error state
       } else {
-        setTestResult(JSON.stringify(result.right, null, 2))
+        setTestResult(JSON.stringify(result.data, null, 2))
         setJsonPathError(null) // Clear error state
       }
     }

@@ -1,7 +1,3 @@
-import * as E from 'fp-ts/Either'
-import { pipe } from 'fp-ts/function'
-import React from 'react'
-
 import Editor from '@monaco-editor/react'
 import parse from 'json-to-ast'
 import { IDisposable, IPosition, editor } from 'monaco-editor'
@@ -20,7 +16,7 @@ type ParsedJson = {
 }
 
 const useEditorChange = (onJsonStringChange: (jsonString: string) => void) => {
-  return React.useCallback(
+  return useCallback(
     (newValue: string | undefined) => {
       if (!newValue) return
 
@@ -43,27 +39,28 @@ const useJsonPathChange = (onJsonPathChangeProp: (path: string | null) => void) 
 }
 
 // This function attempts to parse the JSON string and find the node at the given position
-const handleJsonParse = (jsonString: string, position: IPosition): E.Either<string, ParsedJson> => {
+const handleJsonParse = (jsonString: string, position: IPosition) => {
   try {
-    // Parse the JSON string
     const json: unknown = JSON.parse(jsonString)
-    // Format the JSON string with indentation
     const formattedJson = JSON.stringify(json, null, 2)
-    // Generate an Abstract Syntax Tree (AST) from the formatted JSON
     const ast = parse(formattedJson)
-    // Find the node in the AST at the given position
     const node = findNode(ast, position)
 
-    // If the node is not found or it's not a Property, return an error
     if (!node || node.type !== 'Property') {
-      return E.left('Node not found or not a Property')
+      throw new Error('Node not found or not a Property')
     }
 
-    // If the node is found and it's a Property, return it along with the AST
-    return E.right({ ast, node: node as parse.PropertyNode })
+    return {
+      ast,
+      node: node as parse.PropertyNode,
+      error: null,
+      isValid: true
+    }
   } catch (error) {
-    // If an error occurs during parsing, return the error message
-    return E.left(`Invalid JSON: ${(error as Error).toString()}`)
+    return {
+      error: 'Invalid JSON: ' + (error as Error).message,
+      isValid: false
+    }
   }
 }
 
@@ -101,41 +98,33 @@ export const JsonInput = ({
       return
     }
 
-    // Use the Either monad to handle possible errors during JSON parsing
-    pipe(
-      handleJsonParse(jsonString, position),
-      E.fold(
-        // If an error occurs, log a warning
-        (error) => {
-          console.warn(error)
-        },
-        // If parsing is successful, find the path in the AST
-        ({ ast, node }: ParsedJson) => {
-          let newPath = findPath(ast, '$', position)
+    // Call the handleJsonParse instead of pipe and Either monad.
+    const { ast, node, error, isValid } = handleJsonParse(jsonString, position)
 
-          // If the node is not a value, set the selected key path and trigger a path change
-          if (!isValue(node, position)) {
-            setSelectedKeyPath(newPath)
-            onJsonPathChange(newPath)
-          }
-          // If a key path is selected and an expression is being created, generate a filter expression
-          else if (selectedKeyPath) {
-            const match = selectedKeyPath.match(/.*\[\*\]\.(.*)(?=\.)/)
-            const pathToCurrentNode = match ? `.${match[1]}` : ''
-            const filterExpression = `[?(@${pathToCurrentNode}.${node.key.value}=='${
-              (node.value as parse.LiteralNode).value
-            }')]`
+    if (!isValid && error) {
+      console.warn(error)
+      return
+    }
 
-            // If the selected key path includes a wildcard, replace it with the filter expression
-            if (selectedKeyPath.includes('[*]')) {
-              newPath = selectedKeyPath.replace(/\[\*\](?!.*\[\*\])/g, filterExpression)
-              // Trigger a path change and stop creating the expression
-              onJsonPathChange(newPath)
-            }
-          }
-        }
-      )
-    )
+    let newPath = findPath(ast, '$', position)
+
+    if (!isValue(node, position)) {
+      setSelectedKeyPath(newPath)
+      onJsonPathChange(newPath)
+    } else if (selectedKeyPath) {
+      const match = selectedKeyPath.match(/.*\[\*\]\.(.*)(?=\.)/)
+      const pathToCurrentNode = match ? `.${match[1]}` : ''
+      const filterExpression = `[?(@${pathToCurrentNode}.${node.key.value}=='${
+        (node.value as parse.LiteralNode).value
+      }')]`
+
+      // If the selected key path includes a wildcard, replace it with the filter expression
+      if (selectedKeyPath.includes('[*]')) {
+        newPath = selectedKeyPath.replace(/\[\*\](?!.*\[\*\])/g, filterExpression)
+        // Trigger a path change and stop creating the expression
+        onJsonPathChange(newPath)
+      }
+    }
   }, [
     // Dependencies for the effect hook
     jsonString,
