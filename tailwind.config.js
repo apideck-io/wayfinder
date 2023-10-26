@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 
-const defaultTheme = require('tailwindcss/defaultTheme');
-const colors = require('tailwindcss/colors');
+const defaultTheme = require('tailwindcss/defaultTheme')
+const colors = require('tailwindcss/colors')
 
 export default {
   content: ['./src/**/*.{html,js,jsx,ts,tsx}'],
@@ -9,7 +9,7 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        'basier-circle': ['Basier Circle', ...defaultTheme.fontFamily.sans],
+        'basier-circle': ['Basier Circle', ...defaultTheme.fontFamily.sans]
       },
       colors: {
         gray: colors.slate,
@@ -23,10 +23,10 @@ export default {
           600: '#775ad8',
           700: '#6434d5',
           800: '#5922b9',
-          900: '#5a1aa8',
-        },
-      },
-    },
+          900: '#5a1aa8'
+        }
+      }
+    }
   },
-  plugins: [require('@tailwindcss/forms')],
-};
+  plugins: [require('@tailwindcss/forms')]
+}

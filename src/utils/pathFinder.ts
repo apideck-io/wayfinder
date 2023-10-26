@@ -2,11 +2,7 @@ import parse from 'json-to-ast'
 import { IPosition } from 'monaco-editor'
 
 export const findNode = (
-  node:
-    | parse.ValueNode
-    | parse.PropertyNode
-    | parse.ArrayNode
-    | parse.ObjectNode,
+  node: parse.ValueNode | parse.PropertyNode | parse.ArrayNode | parse.ObjectNode,
   position: IPosition
 ): parse.ASTNode | null => {
   if (isPositionInNode(node, position)) {
@@ -29,11 +25,7 @@ export const findNode = (
 }
 
 export const findPath = (
-  node:
-    | parse.ValueNode
-    | parse.PropertyNode
-    | parse.ArrayNode
-    | parse.ObjectNode,
+  node: parse.ValueNode | parse.PropertyNode | parse.ArrayNode | parse.ObjectNode,
   path: string,
   position: IPosition
 ): string | null => {
@@ -53,11 +45,7 @@ const findPathInObject = (
   position: IPosition
 ): string | null => {
   for (const property of node.children) {
-    const newPath = findPath(
-      property,
-      `${path}.${property.key.value}`,
-      position
-    )
+    const newPath = findPath(property, `${path}.${property.key.value}`, position)
     if (newPath) return newPath
   }
   return null
@@ -88,10 +76,7 @@ const findPathInProperty = (
   return null
 }
 
-export const isPositionInNode = (
-  node: parse.ASTNode,
-  position: IPosition
-): boolean => {
+export const isPositionInNode = (node: parse.ASTNode, position: IPosition): boolean => {
   if (!node.loc) return false
 
   return (

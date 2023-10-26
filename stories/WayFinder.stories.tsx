@@ -1,9 +1,9 @@
-import '../src/styles/index.css';
+import '../src/styles/index.css'
 
-import { Meta, StoryFn } from '@storybook/react';
-import { Props, WayFinderModal } from '../src/components/WayFinderModal';
+import { Meta, StoryFn } from '@storybook/react'
+import { Props, WayFinderModal } from '../src/components/WayFinderModal'
 
-import React from 'react';
+import React from 'react'
 
 const meta: Meta = {
   title: 'WayFinder',
@@ -11,24 +11,24 @@ const meta: Meta = {
   argTypes: {
     children: {
       control: {
-        type: 'text',
-      },
-    },
+        type: 'text'
+      }
+    }
   },
   parameters: {
-    controls: { expanded: true },
-  },
-};
+    controls: { expanded: true }
+  }
+}
 
-export default meta;
+export default meta
 
-const Template: StoryFn<Props> = (args) => <WayFinderModal {...args} />;
+const Template: StoryFn<Props> = (args) => <WayFinderModal {...args} />
 
-export const Modal: any = Template.bind({});
+export const Modal: any = Template.bind({})
 
 Modal.args = {
   onClose: () => {
-    console.log('closed');
+    console.log('closed')
   },
   open: true,
   isStandAlone: false,
@@ -40,20 +40,20 @@ Modal.args = {
         menuitem: [
           { id: 1, name: 'New' },
           { id: 2, name: 'Open' },
-          { id: 3, name: 'Close' },
-        ],
-      },
+          { id: 3, name: 'Close' }
+        ]
+      }
     },
     null,
     2
-  ),
-};
+  )
+}
 
-export const Standalone: any = Template.bind({});
+export const Standalone: any = Template.bind({})
 
 Standalone.args = {
   onClose: () => {
-    console.log('closed');
+    console.log('closed')
   },
   open: true,
   isStandAlone: true,
@@ -65,11 +65,11 @@ Standalone.args = {
         menuitem: [
           { id: 1, name: 'New' },
           { id: 2, name: 'Open' },
-          { id: 3, name: 'Close' },
-        ],
-      },
+          { id: 3, name: 'Close' }
+        ]
+      }
     },
     null,
     2
-  ),
-};
+  )
+}

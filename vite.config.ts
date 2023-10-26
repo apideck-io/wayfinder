@@ -1,7 +1,7 @@
-import react from '@vitejs/plugin-react';
-import { resolve } from 'node:path';
-import { defineConfig } from 'vite';
-import dts from 'vite-plugin-dts';
+import react from '@vitejs/plugin-react'
+import { resolve } from 'node:path'
+import { defineConfig } from 'vite'
+import dts from 'vite-plugin-dts'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -12,11 +12,11 @@ export default defineConfig({
     lib: {
       entry: resolve(__dirname, 'src/index.ts'),
       name: 'wayfinder',
-      fileName: (format) => `wayfinder.${format}.js`,
+      fileName: (format) => `wayfinder.${format}.js`
     },
     rollupOptions: {
       external: ['react'],
-      output: { globals: { react: 'React' } },
-    },
-  },
-});
+      output: { globals: { react: 'React' } }
+    }
+  }
+})

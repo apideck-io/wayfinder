@@ -1,53 +1,53 @@
-import { useCallback, useEffect, useState } from 'react';
-import { Modal } from './Modal';
-import { WayFinder } from './WayFinder';
+import { useCallback, useEffect, useState } from 'react'
+import { Modal } from './Modal'
+import { WayFinder } from './WayFinder'
 
 export interface Props {
-  open: boolean;
-  isStandAlone: boolean;
-  onClose?: () => void;
-  defaultInput?: string;
+  open: boolean
+  isStandAlone: boolean
+  onClose?: () => void
+  defaultInput?: string
 }
 
 export const WayFinderModal: React.FC<Props> = ({
   open,
   onClose,
   isStandAlone = true,
-  defaultInput = '{}',
+  defaultInput = '{}'
 }) => {
-  const [isOpen, setIsOpen] = useState<boolean>(true);
+  const [isOpen, setIsOpen] = useState<boolean>(true)
 
   const onCloseModal = useCallback(() => {
     if (isOpen) {
-      setIsOpen(false);
-      if (onClose) onClose();
+      setIsOpen(false)
+      if (onClose) onClose()
     }
-  }, [isOpen, onClose]);
+  }, [isOpen, onClose])
 
   useEffect(() => {
     if (open && !isOpen) {
-      setIsOpen(open);
-      return;
+      setIsOpen(open)
+      return
     }
     if (!open && isOpen) {
-      onCloseModal();
+      onCloseModal()
     }
-  }, [open, isOpen, onCloseModal]);
+  }, [open, isOpen, onCloseModal])
 
-  const shouldRenderModal = isOpen;
+  const shouldRenderModal = isOpen
 
   return (
-    <div id='react-wayfinder'>
+    <div id="react-wayfinder">
       {shouldRenderModal ? (
         <Modal
           isOpen={isOpen}
           onClose={() => {
-            onCloseModal();
+            onCloseModal()
           }}
         >
           <WayFinder defaultInput={defaultInput} isStandAlone={isStandAlone} />
         </Modal>
       ) : null}
     </div>
-  );
-};
+  )
+}
