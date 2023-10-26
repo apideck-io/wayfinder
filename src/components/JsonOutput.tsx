@@ -1,4 +1,5 @@
 import Editor from '@monaco-editor/react'
+import React from 'react'
 
 type JsonOutputProps = {
   testResult: string | null

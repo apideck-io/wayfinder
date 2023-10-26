@@ -1,6 +1,7 @@
 import * as E from 'fp-ts/Either'
+import React from 'react'
 
-import { useCallback, useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { queryJsonPath } from '../utils/queryJsonPath'
 import { Button } from './Button'
 import { CurrentPathInput } from './CurrentPathInput'
@@ -19,7 +20,7 @@ export const WayFinder = ({ defaultInput = '', isStandAlone = false }: Props) =>
   const [testResult, setTestResult] = useState<string | null>(null)
   const [jsonPathError, setJsonPathError] = useState<string | null>(null)
 
-  const handleTestClick: () => void = useCallback(() => {
+  const handleTestClick: () => void = React.useCallback(() => {
     if (jsonPath) {
       const result = queryJsonPath(jsonString, jsonPath)
       if (E.isLeft(result)) {

@@ -28,7 +28,7 @@ module.exports = {
     '@typescript-eslint/no-unsafe-assignment': 'off',
     '@typescript-eslint/no-unused-vars': [
       'error',
-      { argsIgnorePattern: '^_', ignoreRestSiblings: true }
+      { argsIgnorePattern: '^_', ignoreRestSiblings: true, varsIgnorePattern: '^React$' }
     ],
     'react/prop-types': 'off',
     'react-refresh/only-export-components': ['warn', { allowConstantExport: true }]

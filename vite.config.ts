@@ -15,7 +15,7 @@ export default defineConfig({
       fileName: (format) => `wayfinder.${format}.js`
     },
     rollupOptions: {
-      external: ['react'],
+      external: ['react', 'react-dom'],
       output: { globals: { react: 'React' } }
     }
   }

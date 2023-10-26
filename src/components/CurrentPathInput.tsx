@@ -1,5 +1,6 @@
+import React from 'react'
 import TextInput from './TextInput'
-
+console.log('React', React.version)
 // Define the properties for the CurrentPathInput component
 interface CurrentPathInputProps {
   jsonPath: string | null

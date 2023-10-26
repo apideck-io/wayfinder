@@ -1,12 +1,4 @@
-import {
-  Fragment,
-  HTMLAttributes,
-  ReactNode,
-  createRef,
-  forwardRef,
-  useEffect,
-  useState
-} from 'react'
+import React, { Fragment, ReactNode, createRef, forwardRef, useEffect, useState } from 'react'
 
 import classNames from 'classnames'
 import { useClipboard } from 'use-clipboard-copy'
@@ -17,7 +9,7 @@ const styles = {
   invalid: 'border-red-600 focus:border-red-400 focus:shadow-outline-red'
 }
 
-export interface Props extends HTMLAttributes<HTMLInputElement> {
+export interface Props extends React.HTMLAttributes<HTMLInputElement> {
   name: string
   type?: string
   value?: string
