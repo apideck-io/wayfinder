@@ -8,8 +8,7 @@
   "module": "dist/wayfinder.es.js",
   "typings": "dist/src/index.d.ts",
   "files": [
-    "dist",
-    "src"
+    "dist"
   ],
   "keywords": [
     "apideck"
