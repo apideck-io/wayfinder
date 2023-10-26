@@ -27,6 +27,10 @@
   "publishConfig": {
     "access": "public"
   },
+  "peerDependencies": {
+    "react": ">=17",
+    "react-dom": ">=17"
+  },
   "dependencies": {
     "@monaco-editor/react": "^4.6.0",
     "classnames": "2.3.2",
@@ -36,8 +40,6 @@
     "jsonc-parser": "^3.2.0",
     "jsonpath": "^1.1.1",
     "monaco-editor": "^0.44.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
     "use-clipboard-copy": "0.2.0"
   },
   "devDependencies": {
@@ -69,6 +71,8 @@
     "eslint-plugin-storybook": "^0.6.15",
     "postcss": "^8.4.31",
     "prettier": "^3.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "storybook": "^7.4.6",
     "tailwindcss": "^3.3.3",
     "typescript": "^5.0.2",

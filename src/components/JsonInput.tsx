@@ -1,11 +1,11 @@
-import * as E from 'fp-ts/Either'
-import { pipe } from 'fp-ts/function'
+import * as E from 'fp-ts/Either';
+import { pipe } from 'fp-ts/function';
 
-import Editor from '@monaco-editor/react'
-import parse from 'json-to-ast'
-import { IDisposable, IPosition, editor } from 'monaco-editor'
-import { useCallback, useEffect, useRef, useState } from 'react'
-import { findNode, findPath } from '../utils/pathFinder'
+import Editor from '@monaco-editor/react';
+import parse from 'json-to-ast';
+import { IDisposable, IPosition, editor } from 'monaco-editor';
+import { useCallback, useEffect, useRef, useState } from 'react';
+import { findNode, findPath } from '../utils/pathFinder';
 
 interface JsonInputProps {
   jsonString: string
