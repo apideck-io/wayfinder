@@ -1,5 +1,5 @@
 import Editor from '@monaco-editor/react'
-import parse from 'json-to-ast'
+import parse, { ValueNode } from 'json-to-ast'
 import { IDisposable, IPosition, editor } from 'monaco-editor'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { findNode, findPath } from '../utils/pathFinder'
@@ -8,11 +8,6 @@ interface JsonInputProps {
   jsonString: string
   onJsonPathChange: (path: string | null) => void
   onJsonStringChange: (jsonString: string) => void
-}
-
-type ParsedJson = {
-  ast: parse.ValueNode
-  node: parse.PropertyNode
 }
 
 const useEditorChange = (onJsonStringChange: (jsonString: string) => void) => {
@@ -106,16 +101,16 @@ export const JsonInput = ({
       return
     }
 
-    let newPath = findPath(ast, '$', position)
+    let newPath = findPath(ast as ValueNode, '$', position)
 
-    if (!isValue(node, position)) {
+    if (!isValue(node as parse.PropertyNode, position)) {
       setSelectedKeyPath(newPath)
       onJsonPathChange(newPath)
     } else if (selectedKeyPath) {
       const match = selectedKeyPath.match(/.*\[\*\]\.(.*)(?=\.)/)
       const pathToCurrentNode = match ? `.${match[1]}` : ''
-      const filterExpression = `[?(@${pathToCurrentNode}.${node.key.value}=='${
-        (node.value as parse.LiteralNode).value
+      const filterExpression = `[?(@${pathToCurrentNode}.${node?.key.value}=='${
+        (node?.value as parse.LiteralNode).value
       }')]`
 
       // If the selected key path includes a wildcard, replace it with the filter expression
