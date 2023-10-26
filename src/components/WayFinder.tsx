@@ -12,9 +12,10 @@ import { StandAloneHeader } from './StandAloneHeader'
 interface Props {
   defaultInput?: string
   isStandAlone?: boolean
+  onSelect?: (jsonPath: string) => void
 }
 
-export const WayFinder = ({ defaultInput = '', isStandAlone = false }: Props) => {
+export const WayFinder = ({ defaultInput = '', isStandAlone = false, onSelect }: Props) => {
   const [jsonPath, setJsonPath] = useState<string | null>(null)
   const [jsonString, setJsonString] = useState<string>(defaultInput)
   const [testResult, setTestResult] = useState<string | null>(null)
@@ -73,9 +74,9 @@ export const WayFinder = ({ defaultInput = '', isStandAlone = false }: Props) =>
             <Button
               className="ml-1 z-20"
               variant={jsonPathError ? 'danger' : 'primary'}
-              onClick={handleTestClick}
+              onClick={() => onSelect && onSelect(jsonPath || '')}
             >
-              Test result
+              Select path
             </Button>
           </div>
         </div>

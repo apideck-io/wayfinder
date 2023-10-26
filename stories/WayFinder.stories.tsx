@@ -32,6 +32,7 @@ Modal.args = {
   },
   open: true,
   isStandAlone: false,
+  onSelect: (jsonPath: string) => console.log(jsonPath),
   defaultInput: JSON.stringify(
     {
       id: 'file',
@@ -57,6 +58,7 @@ Standalone.args = {
   },
   open: true,
   isStandAlone: true,
+  onSelect: (jsonPath: string) => console.log(jsonPath),
   defaultInput: JSON.stringify(
     {
       id: 'file',
