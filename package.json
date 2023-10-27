@@ -4,9 +4,15 @@
   "type": "module",
   "author": "Apideck",
   "license": "MIT",
-  "main": "dist/wayfinder.umd.js",
-  "module": "dist/wayfinder.es.js",
-  "typings": "dist/src/index.d.ts",
+  "main": "./dist/wayfinder.umd.js",
+  "module": "./dist/wayfinder.es.js",
+  "typings": "./dist/src/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/wayfinder.es.js",
+      "require": "./dist/wayfinder.umd.js"
+    }
+  },
   "files": [
     "dist"
   ],
@@ -25,12 +31,16 @@
     "build-storybook": "storybook build",
     "copy-css": "cp ./src/styles/custom.css ./dist/styles.css"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apideck-io/wayfinder.git"
+  },
   "publishConfig": {
     "access": "public"
   },
   "peerDependencies": {
-    "react": ">=18",
-    "react-dom": ">=18"
+    "react": "^16.8.0 || ^17.0.0 || ^18.0.0",
+    "react-dom": "^16.8.0 || ^17.0.0 || ^18.0.0"
   },
   "dependencies": {
     "@monaco-editor/react": "^4.6.0",
