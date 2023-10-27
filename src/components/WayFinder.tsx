@@ -12,9 +12,15 @@ interface Props {
   defaultInput?: string
   isStandAlone?: boolean
   onSelect?: (jsonPath: string) => void
+  onClose?: () => void
 }
 
-export const WayFinder = ({ defaultInput = '', isStandAlone = false, onSelect }: Props) => {
+export const WayFinder = ({
+  defaultInput = '',
+  isStandAlone = false,
+  onSelect,
+  onClose
+}: Props) => {
   const [jsonPath, setJsonPath] = useState<string | null>(null)
   const [jsonString, setJsonString] = useState<string>(defaultInput)
   const [testResult, setTestResult] = useState<string | null>(null)
@@ -71,8 +77,17 @@ export const WayFinder = ({ defaultInput = '', isStandAlone = false, onSelect }:
               setJsonPath={setJsonPath}
               jsonPathError={jsonPathError}
             />
+            {onClose && (
+              <Button
+                className="z-20 bg-neutral-700 mr-2 shadow-md text-neutral-200 hover:bg-neutral-700/50 hover:text-neutral-100"
+                variant="outline"
+                onClick={() => onClose && onClose()}
+              >
+                Close
+              </Button>
+            )}
             <Button
-              className="ml-1 z-20"
+              className="z-20"
               variant={jsonPathError ? 'danger' : 'primary'}
               onClick={() => onSelect && onSelect(jsonPath || '')}
             >

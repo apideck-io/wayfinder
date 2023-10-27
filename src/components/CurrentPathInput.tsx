@@ -23,7 +23,7 @@ export const CurrentPathInput = ({
       <TextInput
         name="currentPathValue"
         className="!border-none !shadow-none focus:ring-0 focus:outline-none py-2 pl-3 !items-center !justify-center !flex !font-medium !bg-neutral-800 !text-white placeholder:text-neutral-400"
-        copyIconClassName="!top-[10px] !bg-neutral-700/80 text-neutral-400 hover:!bg-neutral-600 hover:text-neutral-300 !p-1.5"
+        copyIconClassName="!top-[10px] !bg-neutral-700/80 text-neutral-300 hover:!bg-neutral-700/50 hover:text-neutral-100 !p-1.5"
         autoFocus={true}
         placeholder="Current path"
         value={jsonPath || ''}

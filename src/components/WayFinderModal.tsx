@@ -50,6 +50,7 @@ export const WayFinderModal: React.FC<Props> = ({
           <WayFinder
             defaultInput={defaultInput}
             isStandAlone={isStandAlone}
+            onClose={onCloseModal}
             onSelect={(jsonPath) => {
               onSelect && onSelect(jsonPath)
               setIsOpen(false)
