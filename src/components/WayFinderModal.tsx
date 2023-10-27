@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import { FC, useCallback, useEffect, useState } from 'react'
 import { Modal } from './Modal'
 import { WayFinder } from './WayFinder'
 
@@ -10,7 +10,7 @@ export interface Props {
   onSelect?: (jsonPath: string) => void
 }
 
-export const WayFinderModal: React.FC<Props> = ({
+export const WayFinderModal: FC<Props> = ({
   open,
   onClose,
   isStandAlone = true,

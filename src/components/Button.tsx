@@ -1,8 +1,8 @@
-import React, { ReactNode, forwardRef } from 'react'
+import { HTMLAttributes, ReactNode, forwardRef } from 'react'
 
 import classNames from 'classnames'
 
-export interface Props extends React.HTMLAttributes<HTMLButtonElement> {
+export interface Props extends HTMLAttributes<HTMLButtonElement> {
   children?: ReactNode
   type?: 'button' | 'submit' | 'reset'
   variant?: 'primary' | 'secondary' | 'outline' | 'danger' | 'danger-outline'

@@ -1,10 +1,10 @@
 import { Dialog, Transition } from '@headlessui/react'
-import React, { CSSProperties, Fragment, ReactNode, useEffect, useState } from 'react'
+import { CSSProperties, FC, Fragment, HTMLAttributes, ReactNode, useEffect, useState } from 'react'
 
 import classNames from 'classnames'
 import { createPortal } from 'react-dom'
 
-export interface Props extends React.HTMLAttributes<HTMLDivElement> {
+export interface Props extends HTMLAttributes<HTMLDivElement> {
   children: ReactNode
   onClose: () => void
   isOpen: boolean
@@ -12,7 +12,7 @@ export interface Props extends React.HTMLAttributes<HTMLDivElement> {
   style?: CSSProperties
 }
 
-export const Modal: React.FC<Props> = ({
+export const Modal: FC<Props> = ({
   children,
   onClose,
   isOpen = false,

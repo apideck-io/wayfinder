@@ -1,11 +1,11 @@
 import Editor from '@monaco-editor/react'
-import React from 'react'
+import { FC } from 'react'
 
 type JsonOutputProps = {
   testResult: string | null
 }
 
-export const JsonOutput: React.FC<JsonOutputProps> = ({ testResult }) => {
+export const JsonOutput: FC<JsonOutputProps> = ({ testResult }) => {
   return (
     <Editor
       width="100%"

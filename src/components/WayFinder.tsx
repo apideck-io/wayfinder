@@ -1,4 +1,4 @@
-import React from 'react'
+import { useCallback } from 'react'
 
 import { useEffect, useState } from 'react'
 import { queryJsonPath } from '../utils/queryJsonPath'
@@ -26,7 +26,7 @@ export const WayFinder = ({
   const [testResult, setTestResult] = useState<string | null>(null)
   const [jsonPathError, setJsonPathError] = useState<string | null>(null)
 
-  const handleTestClick: () => void = React.useCallback(() => {
+  const handleTestClick: () => void = useCallback(() => {
     if (jsonPath) {
       const result = queryJsonPath(jsonString, jsonPath)
 
