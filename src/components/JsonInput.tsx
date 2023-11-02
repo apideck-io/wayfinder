@@ -159,16 +159,13 @@ export const JsonInput = ({
     colorDecorators: true,
     cursorBlinking: 'blink',
     autoClosingQuotes: 'always',
-    find: {
-      autoFindInSelection: 'always'
-    },
     snippetSuggestions: 'inline',
     minimap: {
       enabled: false
     },
-    language: 'JSON',
     folding: true,
-    formatOnPaste: true
+    formatOnPaste: true,
+    language: 'JSON'
   }
 
   return (
