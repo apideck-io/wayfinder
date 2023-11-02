@@ -97,10 +97,11 @@ export const WayFinder = ({
             )}
             <Button
               className="z-20"
-              variant={jsonPathError ? 'danger' : 'primary'}
+              variant={!!jsonPathError ? 'danger' : 'primary'}
+              disabled={!!jsonPathError}
               onClick={() => onSelect && onSelect(jsonPath || '')}
             >
-              Select path
+              {jsonPathError ? 'Invalid path' : 'Select path'}
             </Button>
           </div>
         </div>
