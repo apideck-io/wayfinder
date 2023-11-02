@@ -1,7 +1,6 @@
 {
   "version": "0.2.2",
   "name": "@apideck/wayfinder",
-  "type": "module",
   "author": "Apideck",
   "license": "MIT",
   "main": "./dist/wayfinder.umd.js",

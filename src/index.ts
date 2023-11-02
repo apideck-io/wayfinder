@@ -1,1 +1,2 @@
-export { WayFinder } from './components/WayFinder'
+import { WayFinder } from './components/WayFinder'
+export { WayFinder }
