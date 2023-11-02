@@ -45,7 +45,7 @@ const findPathInObject = (
   position: IPosition
 ): string | null => {
   for (const property of node.children) {
-    const newPath = findPath(property, `${path}.${property.key.value}`, position)
+    const newPath = findPath(property, `${path}['${property.key.value}']`, position)
     if (newPath) return newPath
   }
   return null
