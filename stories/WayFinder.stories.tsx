@@ -50,6 +50,33 @@ Modal.args = {
   )
 }
 
+export const ModalEditing: any = Template.bind({})
+
+ModalEditing.args = {
+  defaultJsonPath: '$.popup.menuitem[*].name',
+  onClose: () => {
+    console.log('closed')
+  },
+  open: true,
+  isStandAlone: false,
+  onSelect: (jsonPath: string) => console.log(jsonPath),
+  defaultInput: JSON.stringify(
+    {
+      id: 'file',
+      value: 'File',
+      popup: {
+        menuitem: [
+          { id: 1, name: 'New' },
+          { id: 2, name: 'Open' },
+          { id: 3, name: 'Close' }
+        ]
+      }
+    },
+    null,
+    2
+  )
+}
+
 export const Standalone: any = Template.bind({})
 
 Standalone.args = {

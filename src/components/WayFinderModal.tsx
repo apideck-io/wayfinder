@@ -7,6 +7,7 @@ export interface Props {
   isStandAlone: boolean
   onClose?: () => void
   defaultInput?: string
+  defaultJsonPath?: string
   onSelect?: (jsonPath: string) => void
 }
 
@@ -15,6 +16,7 @@ export const WayFinderModal: FC<Props> = ({
   onClose,
   isStandAlone = true,
   defaultInput = '{}',
+  defaultJsonPath = '',
   onSelect
 }) => {
   const [isOpen, setIsOpen] = useState<boolean>(true)
@@ -48,6 +50,7 @@ export const WayFinderModal: FC<Props> = ({
           }}
         >
           <WayFinder
+            defaultJsonPath={defaultJsonPath}
             defaultInput={defaultInput}
             isStandAlone={isStandAlone}
             onClose={onCloseModal}

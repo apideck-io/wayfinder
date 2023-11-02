@@ -2,7 +2,7 @@ import TextInput from './TextInput'
 
 // Define the properties for the CurrentPathInput component
 interface CurrentPathInputProps {
-  jsonPath: string | null
+  jsonPath?: string | null
   className?: string
   jsonPathError: string | null
   // Function to set the JSON path

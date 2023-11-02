@@ -10,6 +10,7 @@ import { StandAloneHeader } from './StandAloneHeader'
 
 interface Props {
   defaultInput?: string
+  defaultJsonPath?: string
   isStandAlone?: boolean
   onSelect?: (jsonPath: string) => void
   onClose?: () => void
@@ -17,14 +18,22 @@ interface Props {
 
 export const WayFinder = ({
   defaultInput = '',
+  defaultJsonPath = '',
   isStandAlone = false,
   onSelect,
   onClose
 }: Props) => {
-  const [jsonPath, setJsonPath] = useState<string | null>(null)
+  const [jsonPath, setJsonPath] = useState<string | null>()
   const [jsonString, setJsonString] = useState<string>(defaultInput)
   const [testResult, setTestResult] = useState<string | null>(null)
   const [jsonPathError, setJsonPathError] = useState<string | null>(null)
+
+  useEffect(() => {
+    if (!jsonPath && defaultJsonPath) {
+      setJsonPath(defaultJsonPath)
+      handleTestClick()
+    }
+  }, [defaultJsonPath])
 
   const handleTestClick: () => void = useCallback(() => {
     if (jsonPath) {
