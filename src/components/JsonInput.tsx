@@ -108,7 +108,7 @@ export const JsonInput = ({
       onJsonPathChange(newPath)
     } else if (selectedKeyPath) {
       const match = selectedKeyPath.match(/.*\[\*\]\.(.*)(?=\.)/)
-      const pathToCurrentNode = match ? `.${match[1]}` : ''
+      const pathToCurrentNode = match ? `.${match[1]}'` : ''
       const filterExpression = `[?(@${pathToCurrentNode}.${node?.key.value}=='${
         (node?.value as parse.LiteralNode).value
       }')]`
@@ -116,6 +116,7 @@ export const JsonInput = ({
       // If the selected key path includes a wildcard, replace it with the filter expression
       if (selectedKeyPath.includes('[*]')) {
         newPath = selectedKeyPath.replace(/\[\*\](?!.*\[\*\])/g, filterExpression)
+
         // Trigger a path change and stop creating the expression
         onJsonPathChange(newPath)
       }
