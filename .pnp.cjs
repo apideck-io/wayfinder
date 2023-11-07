@@ -28,6 +28,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
         [null, {\
           "packageLocation": "./",\
           "packageDependencies": [\
+            ["@esbuild/darwin-x64", "npm:0.19.5"],\
             ["@headlessui/react", "virtual:77dc4b2ef821fc7eff0f4007e2529200ecf22085ae6d2c13f6893ff3606b5247d980e4489462aba66eb7c9089d1f9f71bebef8516f9c92918c8648bdb7c0cfce#npm:1.7.17"],\
             ["@monaco-editor/react", "virtual:77dc4b2ef821fc7eff0f4007e2529200ecf22085ae6d2c13f6893ff3606b5247d980e4489462aba66eb7c9089d1f9f71bebef8516f9c92918c8648bdb7c0cfce#npm:4.6.0"],\
             ["@storybook/addon-essentials", "virtual:77dc4b2ef821fc7eff0f4007e2529200ecf22085ae6d2c13f6893ff3606b5247d980e4489462aba66eb7c9089d1f9f71bebef8516f9c92918c8648bdb7c0cfce#npm:7.5.3"],\
@@ -113,6 +114,7 @@ function $$SETUP_STATE(hydrateRuntimeState, basePath) {
           "packageLocation": "./",\
           "packageDependencies": [\
             ["@apideck/wayfinder", "workspace:."],\
+            ["@esbuild/darwin-x64", "npm:0.19.5"],\
             ["@headlessui/react", "virtual:77dc4b2ef821fc7eff0f4007e2529200ecf22085ae6d2c13f6893ff3606b5247d980e4489462aba66eb7c9089d1f9f71bebef8516f9c92918c8648bdb7c0cfce#npm:1.7.17"],\
             ["@monaco-editor/react", "virtual:77dc4b2ef821fc7eff0f4007e2529200ecf22085ae6d2c13f6893ff3606b5247d980e4489462aba66eb7c9089d1f9f71bebef8516f9c92918c8648bdb7c0cfce#npm:4.6.0"],\
             ["@storybook/addon-essentials", "virtual:77dc4b2ef821fc7eff0f4007e2529200ecf22085ae6d2c13f6893ff3606b5247d980e4489462aba66eb7c9089d1f9f71bebef8516f9c92918c8648bdb7c0cfce#npm:7.5.3"],\

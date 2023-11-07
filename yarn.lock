@@ -33,6 +33,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@apideck/wayfinder@workspace:."
   dependencies:
+    "@esbuild/darwin-x64": ^0.19.5
     "@headlessui/react": ^1.4.2
     "@monaco-editor/react": ^4.6.0
     "@storybook/addon-essentials": ^7.5.3
@@ -1672,9 +1673,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@esbuild/darwin-x64@npm:0.19.5":
+"@esbuild/darwin-x64@npm:0.19.5, @esbuild/darwin-x64@npm:^0.19.5":
   version: 0.19.5
   resolution: "@esbuild/darwin-x64@npm:0.19.5"
+  checksum: 4ec96dfde18237bcb730ef6ec1c5a1a8397ecc486149d14a00c5315e9bb00610941fb5b9be08edbf1ea86d16cfff4521a367e97b10e38c9dbf225c4af12ab321
   conditions: os=darwin & cpu=x64
   languageName: node
   linkType: hard
